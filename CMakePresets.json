@@ -1,0 +1,43 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "web",
+            "displayName": "Web Build",
+            "description": "emscripten and ninja build",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "$env{HOME}/dev/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
+            }
+        },
+        {
+            "name": "clang",
+            "displayName": "Clang-20",
+            "description": "Using compilers: C = clang-20, CXX = clang++-20",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_C_COMPILER": "clang-20",
+                "CMAKE_CXX_COMPILER": "clang++-20",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "web",
+            "description": "emscripten and ninja build",
+            "displayName": "Web Build",
+            "configurePreset": "web"
+        },
+        {
+            "name": "clang",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "clang"
+        }
+    ]
+}
