@@ -21,8 +21,16 @@ add_executable(${PROJECT_NAME}
 )
 
 if (EMSCRIPTEN)
+
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY -s GL_ENABLE_GET_PROC_ADDRESS=1")
-    set(CMAKE_EXECUTABLE_SUFFIX ".html") # This line is used to set your executable to build with the emscripten html template so that you can directly open it.
+    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+
+    add_custom_target(webpage
+        COMMAND ${EMSCRIPTEN_ROOT_PATH}/emrun --hostname localhost --port 6931 --browser helium --no-emrun-detect "$<TARGET_FILE:${PROJECT_NAME}>"
+        USES_TERMINAL
+        VERBATIM
+    )
+
 endif ()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
