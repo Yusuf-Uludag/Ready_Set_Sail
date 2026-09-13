@@ -16,9 +16,7 @@ FetchContent_Declare(Raylib
 )
 FetchContent_MakeAvailable(Raylib)
 
-add_executable(${PROJECT_NAME}
-    Main.cpp
-)
+add_subdirectory(src/)
 
 if (EMSCRIPTEN)
 
