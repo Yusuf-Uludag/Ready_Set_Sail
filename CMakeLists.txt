@@ -28,7 +28,7 @@ add_subdirectory(src/)
 if (EMSCRIPTEN)
 
     add_custom_target(webpage
-        COMMAND ${EMSCRIPTEN_ROOT_PATH}/emrun --hostname localhost --port 6931 --browser helium --no-emrun-detect "$<TARGET_FILE:${PROJECT_NAME}>"
+        COMMAND ${EMSCRIPTEN_ROOT_PATH}/emrun --hostname localhost --port 6931 --no-emrun-detect "$<TARGET_FILE:${PROJECT_NAME}>"
         USES_TERMINAL
         VERBATIM
     )
