@@ -29,14 +29,14 @@
     "buildPresets": [
         {
             "name": "web",
-            "description": "emscripten and ninja debug",
+            "description": "emscripten and ninja debug build for web",
             "displayName": "Web Build",
             "configurePreset": "web"
         },
         {
             "name": "clang",
-            "description": "clang debug",
-            "displayName": "",
+            "description": "clang debug build for desktop",
+            "displayName": "Clang Debug",
             "configurePreset": "clang"
         }
     ]
