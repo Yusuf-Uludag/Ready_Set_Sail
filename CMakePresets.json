@@ -3,7 +3,7 @@
     "configurePresets": [
         {
             "name": "web",
-            "displayName": "Web Build",
+            "displayName": "Web Debug",
             "description": "emscripten and ninja build",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
@@ -15,7 +15,7 @@
         },
         {
             "name": "clang",
-            "displayName": "Clang-20",
+            "displayName": "Clang-20 Debug",
             "description": "Using compilers: C = clang-20, CXX = clang++-20",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
@@ -29,13 +29,13 @@
     "buildPresets": [
         {
             "name": "web",
-            "description": "emscripten and ninja build",
+            "description": "emscripten and ninja debug",
             "displayName": "Web Build",
             "configurePreset": "web"
         },
         {
             "name": "clang",
-            "description": "",
+            "description": "clang debug",
             "displayName": "",
             "configurePreset": "clang"
         }
