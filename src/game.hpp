@@ -1,3 +1,5 @@
-#include "raylib.h"
+#pragma once
 
-void UpdateDrawFrame();
+void InitGame();
+void DeinitGame();
+void GameLoop();

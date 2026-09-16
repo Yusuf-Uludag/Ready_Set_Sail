@@ -1,19 +1,25 @@
 #include "game.hpp"
+#include <raylib.h>
 
 #if defined(PLATFORM_WEB)
 #include <emscripten/emscripten.h>
 #endif
 
-const int screenWidth = 800;
-const int screenHeight = 450;
+const int screenWidth = 640;
+const int screenHeight = 576;
 
-int main(void)
+int main()
 {
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+    InitWindow(screenWidth, screenHeight, "Ready, Set, Sail!");
+    SetWindowMinSize(160, 144);
+
+    InitGame();
 
 #if defined(PLATFORM_WEB)
 
-    emscripten_set_main_loop(UpdateDrawFrame, 0, 1);
+    emscripten_set_main_loop(GameLoop, 0, 1);
 
 #else
 
@@ -21,11 +27,12 @@ int main(void)
 
     while (!WindowShouldClose())
     {
-        UpdateDrawFrame();
+        GameLoop();
     }
 
 #endif
 
+    DeinitGame();
     CloseWindow();
 
     return 0;
