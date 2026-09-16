@@ -28,6 +28,7 @@ add_subdirectory(src/)
 if (EMSCRIPTEN)
 
     add_custom_target(webpage
+        COMMAND fuser -k 6931/tcp
         COMMAND ${EMSCRIPTEN_ROOT_PATH}/emrun --hostname localhost --port 6931 --no-emrun-detect "$<TARGET_FILE:${PROJECT_NAME}>"
         USES_TERMINAL
         VERBATIM
